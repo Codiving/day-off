@@ -11,10 +11,18 @@
 }
 
 @font-face {
-  font-family: "PTBandocheB";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2408@1.0/PTBandocheB.woff2")
-    format("woff2");
-  font-weight: 700;
+  font-family: "CookieRun-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "양진체";
+  src: url("https://fastly.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff")
+    format("woff");
+  font-weight: normal;
   font-style: normal;
 }
 
@@ -23,7 +31,11 @@ body {
 }
 
 body > * {
-  font-family: "Cafe24Ohsquare";
+  font-family: "양진체";
+}
+
+#calendar > * {
+  font-family: "CookieRun-Regular";
 }
 
 #scroll-container {
