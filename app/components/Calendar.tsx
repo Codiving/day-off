@@ -1,15 +1,23 @@
 "use client";
 import dayjs from "dayjs";
 import WeekdayHeader from "./WeekdayHeader";
+import { DATE } from "../data/date";
+import Image from "next/image";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import YearMonthNav from "./YearMonthNav";
 
 interface CalendarProps {
   year: number;
   month: number;
   className: string;
+  onChangeYear: (year: dayjs.Dayjs) => void;
+  onChangeMonth: (month: dayjs.Dayjs) => void;
 }
 
 export default function Calendar(props: CalendarProps) {
-  const { year, month, className } = props;
+  const { year, month, className, onChangeYear, onChangeMonth } = props;
+
+  const dateInfo = DATE[year];
 
   const currentDate = dayjs(`${year}-${month}-01`);
   const startDay = currentDate.startOf("month").day();
@@ -57,29 +65,67 @@ export default function Calendar(props: CalendarProps) {
   };
 
   return (
-    <div className={`${className}`}>
-      <div className="">
-        <h2 className="pl-4 text-3xl font-bold mb-7 text-center">
-          {currentDate.format("YYYY년 MM월")} 연차쓰기 좋은 날은?
-        </h2>
+    <div className={`${className} flex flex-col`}>
+      <div className="w-full py-6">
+        <YearMonthNav
+          date={currentDate}
+          onChangeYear={onChangeYear}
+          onChangeMonth={onChangeMonth}
+        />
       </div>
 
-      <div className="w-full bg-gray-100 py-4">
-        <div className="max-w-6xl mx-auto grid grid-cols-7 gap-2 text-center">
-          <WeekdayHeader />
-          {daysArray.map((day, index) => {
-            const { dayString, className } = getDayProps(day);
-            const keyPrefix =
-              day <= 0 ? "prev" : day > daysInMonth ? "next" : "current";
-            return (
-              <div
-                key={`${keyPrefix}-${index}`}
-                className="relative p-4 text-2xl flex flex-col gap-2"
-              >
-                <span className={`${className}`}>{dayString}</span>
-              </div>
-            );
-          })}
+      <div className="w-full bg-gray-100 py-4 flex-1">
+        <div className="flex max-w-6xl mx-auto" style={{ height: 600 }}>
+          <div className="w-30p flex items-center justify-center flex-col">
+            <p className="text-xl">가까운 공휴일</p>
+            <p className="text-3xl">광복절</p>
+            <p className="text-xl text-slate-500">
+              {DATE[2024].holiday[0].description}
+            </p>
+          </div>
+
+          <div
+            id="calendar"
+            className="flex-1 grid grid-cols-7 gap-2 text-center"
+          >
+            <WeekdayHeader />
+            {daysArray.map((day, index) => {
+              const { dayString, className } = getDayProps(day);
+              const keyPrefix =
+                day <= 0 ? "prev" : day > daysInMonth ? "next" : "current";
+              const dateNumber = Number(
+                `${year}${month.toString().padStart(2, "0")}${dayString}`
+              );
+              const holiday = dateInfo.holiday.find(
+                ({ date }) => date === dateNumber
+              );
+
+              return (
+                <div
+                  key={`${keyPrefix}-${index}`}
+                  className="justify-center items-center relative p-4 text-2xl flex flex-col gap-2"
+                >
+                  <span
+                    className={`${
+                      holiday
+                        ? "rounded-full bg-red-500 text-white py-1 px-2"
+                        : ""
+                    } ${className}`}
+                  >
+                    {dayString}
+                  </span>
+
+                  {!!holiday && (
+                    <span
+                      className={`bottom-0 absolute text-sm left-1/2 transform -translate-x-1/2`}
+                    >
+                      {holiday.name}
+                    </span>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
