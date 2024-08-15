@@ -18,7 +18,7 @@ export default function YearMonthNav(props: YearMonthNavProps) {
             onChangeYear(date.add(1, "year"));
           }}
           size={20}
-          className="cursor-pointer text-slate-400 hover:text-slate-500"
+          className="cursor-pointer text-slate-500 hover:text-slate-700 hover:scale-110 transition-transform duration-300"
         />
         <span className="text-3xl">{date.format("YYYY년")}</span>
         <IoIosArrowDown
@@ -26,7 +26,7 @@ export default function YearMonthNav(props: YearMonthNavProps) {
             onChangeYear(date.subtract(1, "year"));
           }}
           size={20}
-          className="cursor-pointer text-slate-400 hover:text-slate-500"
+          className="mt-2 cursor-pointer text-slate-500 hover:text-slate-700 hover:scale-110 transition-transform duration-300"
         />
       </div>
       <div className="flex flex-col items-center gap-1">
@@ -35,7 +35,7 @@ export default function YearMonthNav(props: YearMonthNavProps) {
             onChangeMonth(date.add(1, "month"));
           }}
           size={20}
-          className="cursor-pointer text-slate-400 hover:text-slate-500"
+          className="cursor-pointer text-slate-500 hover:text-slate-700 hover:scale-110 transition-transform duration-300"
         />
         <span className="text-3xl">{date.format("MM월")}</span>
         <IoIosArrowDown
@@ -43,10 +43,10 @@ export default function YearMonthNav(props: YearMonthNavProps) {
             onChangeMonth(date.subtract(1, "month"));
           }}
           size={20}
-          className="cursor-pointer text-slate-400 hover:text-slate-500"
+          className="mt-2 cursor-pointer text-slate-500 hover:text-slate-700 hover:scale-110 transition-transform duration-300"
         />
       </div>
-      <p>연차쓰기 좋은 날은?</p>
+      <p className="mb-2">연차쓰기 좋은 날은?</p>
     </div>
   );
 }
