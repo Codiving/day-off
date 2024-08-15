@@ -58,26 +58,29 @@ export default function Calendar(props: CalendarProps) {
 
   return (
     <div className={`${className}`}>
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="pl-8 text-3xl font-bold mb-7">
-          {currentDate.format("YYYY년 MM월")}
+      <div className="">
+        <h2 className="pl-4 text-3xl font-bold mb-7 text-center">
+          {currentDate.format("YYYY년 MM월")} 연차쓰기 좋은 날은?
         </h2>
       </div>
-      <div className="grid grid-cols-7 gap-2">
-        <WeekdayHeader />
-        {daysArray.map((day, index) => {
-          const { dayString, className } = getDayProps(day);
-          const keyPrefix =
-            day <= 0 ? "prev" : day > daysInMonth ? "next" : "current";
-          return (
-            <div
-              key={`${keyPrefix}-${index}`}
-              className="relative p-3 text-2xl text-center flex flex-col items-center gap-2"
-            >
-              <span className={`${className} p-2`}>{dayString}</span>
-            </div>
-          );
-        })}
+
+      <div className="w-full bg-gray-100 py-4">
+        <div className="max-w-6xl mx-auto grid grid-cols-7 gap-2 text-center">
+          <WeekdayHeader />
+          {daysArray.map((day, index) => {
+            const { dayString, className } = getDayProps(day);
+            const keyPrefix =
+              day <= 0 ? "prev" : day > daysInMonth ? "next" : "current";
+            return (
+              <div
+                key={`${keyPrefix}-${index}`}
+                className="relative p-4 text-2xl flex flex-col gap-2"
+              >
+                <span className={`${className}`}>{dayString}</span>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
