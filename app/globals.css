@@ -21,3 +21,19 @@
 body > * {
   font-family: "Cafe24Ohsquare";
 }
+
+#scroll-container {
+  height: 100dvh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.item {
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  scroll-snap-align: start;
+}
