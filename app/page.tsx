@@ -5,12 +5,16 @@ import Calendar from "./components/Calendar";
 import Header from "./components/Header";
 
 export default function Home() {
-  const [currentDate, setCurrentDate] = useState(dayjs());
+  const [date, setDate] = useState(dayjs());
+
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  const changeMonth = (offset: number) => {
-    const newDate = currentDate.add(offset, "month");
-    setCurrentDate(newDate);
+  const onChangeYear = (newDate: dayjs.Dayjs) => {
+    setDate(newDate);
+  };
+
+  const onChangeMonth = (newDate: dayjs.Dayjs) => {
+    setDate(newDate);
   };
 
   useEffect(() => {
@@ -46,15 +50,14 @@ export default function Home() {
 
   return (
     <div id="scroll-container" ref={containerRef}>
-      <main className="relative item flex flex-col w-full">
-        <div className="absolute top-0 w-full">
-          <Header />
-        </div>
-        <section className="w-full flex gap-4">
+      <main className="item flex flex-col w-full gap-6">
+        <section className="w-full flex gap-4 flex-1">
           <Calendar
-            className="w-full mx-auto"
-            year={currentDate.year()}
-            month={currentDate.month() + 1}
+            className="w-full mx-auto flex-1"
+            year={date.year()}
+            month={date.month() + 1}
+            onChangeYear={onChangeYear}
+            onChangeMonth={onChangeMonth}
           />
         </section>
       </main>
