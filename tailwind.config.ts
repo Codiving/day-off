@@ -10,6 +10,9 @@ const config: Config = {
     extend: {
       colors: {
         "day-off": "#38ADA9"
+      },
+      width: {
+        "30p": "30%"
       }
     }
   },
