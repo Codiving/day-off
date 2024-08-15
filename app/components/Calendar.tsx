@@ -76,12 +76,21 @@ export default function Calendar(props: CalendarProps) {
 
       <div className="w-full bg-gray-100 py-4 flex-1">
         <div className="flex max-w-6xl mx-auto" style={{ height: 600 }}>
-          <div className="w-30p flex items-center justify-center flex-col">
+          <div className="w-30p flex items-center justify-center flex-col gap-3">
             <p className="text-xl">가까운 공휴일</p>
-            <p className="text-3xl">광복절</p>
+            <p className="text-3xl">8월 15일 - 광복절</p>
             <p className="text-xl text-slate-500">
-              {DATE[2024].holiday[0].description}
+              {DATE[2024].holiday[12].description}
             </p>
+            <div className="w-72 h-72 rounded-full overflow-hidden flex items-center justify-center relative">
+              <Image
+                src="/koreanFlag.jpg"
+                alt="태극기"
+                fill
+                sizes="auto"
+                priority
+              />
+            </div>
           </div>
 
           <div
