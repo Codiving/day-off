@@ -13,6 +13,9 @@ const config: Config = {
       },
       width: {
         "30p": "30%"
+      },
+      height: {
+        "600": "600px"
       }
     }
   },

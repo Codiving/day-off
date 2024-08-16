@@ -5,19 +5,6 @@ import ClosestHoliday from "./ClosestHoliday";
 import WeekdayHeader from "./WeekdayHeader";
 import YearMonthNav from "./YearMonthNav";
 
-interface OtherMonthDayProps {
-  day: number;
-}
-
-const OtherMonthDay = (props: OtherMonthDayProps) => {
-  const { day } = props;
-  return (
-    <div className="justify-center items-center relative p-4 text-2xl flex flex-col gap-2">
-      <span className={`text-gray-400`}>{String(day).padStart(2, "0")}</span>
-    </div>
-  );
-};
-
 interface CalendarProps {
   year: number;
   month: number;
@@ -44,19 +31,37 @@ export default function Calendar(props: CalendarProps) {
     (_, index) => index - startDay + 1
   );
 
-  const prev: number[] = [];
-  const current: number[] = [];
-  const next: number[] = [];
+  const getDayProps = (day: number) => {
+    const dayDate = currentDate.set("date", day);
+    const dayOfWeek = dayDate.day();
 
-  daysArray.forEach(day => {
     if (day <= 0) {
-      prev.push(daysInPrevMonth + day);
-    } else if (day > daysInMonth) {
-      next.push(day - daysInMonth);
-    } else {
-      current.push(day);
+      return {
+        dayString: String(daysInPrevMonth + day).padStart(2, "0"),
+        className: `text-gray-400`
+      };
     }
-  });
+    if (day > daysInMonth) {
+      return {
+        dayString: String(day - daysInMonth).padStart(2, "0"),
+        className: `text-gray-400`
+      };
+    }
+
+    const weekDayClassName =
+      day > 0 && day <= daysInMonth
+        ? dayOfWeek === 0
+          ? "text-red-500"
+          : dayOfWeek === 6
+          ? "text-blue-500"
+          : ""
+        : "";
+
+    return {
+      dayString: String(day).padStart(2, "0"),
+      className: `${weekDayClassName}`
+    };
+  };
 
   return (
     <div className={`${className} flex flex-col`}>
@@ -77,19 +82,12 @@ export default function Calendar(props: CalendarProps) {
             className="flex-1 grid grid-cols-7 gap-2 text-center"
           >
             <WeekdayHeader />
-            {prev.map(day => {
-              return <OtherMonthDay key={`prev-${day}`} day={day} />;
-            })}
-            {current.map(day => {
-              const dayDate = currentDate.set("date", day);
-              const dayOfWeek = dayDate.day();
-              const isSunday = dayOfWeek === 0;
-              const isSaturday = dayOfWeek === 6;
-
+            {daysArray.map((day, index) => {
+              const { dayString, className } = getDayProps(day);
+              const keyPrefix =
+                day <= 0 ? "prev" : day > daysInMonth ? "next" : "current";
               const dateNumber = Number(
-                `${year}${month.toString().padStart(2, "0")}${String(
-                  day
-                ).padStart(2, "0")}`
+                `${year}${month.toString().padStart(2, "0")}${dayString}`
               );
               const holiday = dateInfo.holiday.find(
                 ({ date }) => date === dateNumber
@@ -97,7 +95,7 @@ export default function Calendar(props: CalendarProps) {
 
               return (
                 <div
-                  key={`current-${day}`}
+                  key={`${keyPrefix}-${index}`}
                   className="justify-center items-center relative p-4 text-2xl flex flex-col gap-2"
                 >
                   <span
@@ -105,15 +103,9 @@ export default function Calendar(props: CalendarProps) {
                       holiday
                         ? "rounded-full bg-red-500 text-white py-1 px-2"
                         : ""
-                    } ${
-                      isSunday
-                        ? "text-red-500"
-                        : isSaturday
-                        ? "text-blue-500"
-                        : ""
-                    }`}
+                    } ${className}`}
                   >
-                    {String(day).padStart(2, "0")}
+                    {dayString}
                   </span>
 
                   {!!holiday && (
@@ -125,9 +117,6 @@ export default function Calendar(props: CalendarProps) {
                   )}
                 </div>
               );
-            })}
-            {next.map(day => {
-              return <OtherMonthDay key={`next-${day}`} day={day} />;
             })}
           </div>
         </div>
