@@ -39,7 +39,7 @@ export default function Home() {
 
   return (
     <div id="scroll-container" ref={containerRef}>
-      <section className="item flex flex-col">
+      <section className="item">
         <Intro />
       </section>
       <main className="item flex flex-col w-full gap-6">

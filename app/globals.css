@@ -47,9 +47,9 @@ body > * {
 
 .item {
   height: 100dvh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
   font-size: 2em;
   scroll-snap-align: start;
 }
