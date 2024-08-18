@@ -20,6 +20,8 @@ export default function CalendarDay({
   const dateNumber = Number(
     `${year}${month.toString().padStart(2, "0")}${String(day).padStart(2, "0")}`
   );
+  const today = dayjs();
+  const isToday = today.isSame(dayDate, "day");
 
   const holiday = dateInfo.holiday.find(
     ({ date }: { date: string }) =>
@@ -39,6 +41,11 @@ export default function CalendarDay({
       {!!holiday && (
         <span className="bottom-0 absolute text-sm left-1/2 transform -translate-x-1/2 whitespace-nowrap">
           {holiday.name}
+        </span>
+      )}
+      {!holiday && isToday && (
+        <span className="bottom-0 absolute text-sm text-green-800 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
+          오늘
         </span>
       )}
     </div>
