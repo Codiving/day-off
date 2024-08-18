@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import HolidayCalendar from "./components/HolidayCalendar";
+import Intro from "./components/Intro";
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -38,12 +39,14 @@ export default function Home() {
 
   return (
     <div id="scroll-container" ref={containerRef}>
+      <section className="item flex flex-col">
+        <Intro />
+      </section>
       <main className="item flex flex-col w-full gap-6">
         <section className="w-full flex gap-4 flex-1">
           <HolidayCalendar className="w-full mx-auto flex-1" />
         </section>
       </main>
-      <section className="item bg-slate-300">1</section>
       <section className="item bg-red-300">2</section>
       <section className="item bg-yellow-300">3</section>
     </div>
