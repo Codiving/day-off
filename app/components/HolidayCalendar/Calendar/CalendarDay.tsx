@@ -27,7 +27,9 @@ export default function CalendarDay({
   );
 
   const dayClasses = [
-    holiday ? "rounded-full bg-red-500 text-white py-1 px-2" : "",
+    holiday
+      ? "rounded-full bg-red-500 text-white py-1 px-2 flex items-center aspect-[1/1]"
+      : "",
     isSunday ? "text-red-500" : isSaturday ? "text-blue-500" : ""
   ].join(" ");
 
