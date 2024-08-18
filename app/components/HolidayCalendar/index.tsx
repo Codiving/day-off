@@ -26,7 +26,7 @@ export default function HolidayCalendar(props: HolidayCalendarProps) {
         />
       </div>
 
-      <div className="w-full bg-gray-100 py-4 flex-1">
+      <div className="w-full bg-gray-100 py-4 px-4 flex-1">
         <div className="flex max-w-6xl mx-auto" style={{ height: 600 }}>
           <div className="w-30p flex items-center justify-center flex-col gap-3">
             <ClosestHoliday />

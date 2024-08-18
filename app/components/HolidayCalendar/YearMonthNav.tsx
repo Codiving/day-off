@@ -11,7 +11,7 @@ export default function YearMonthNav(props: YearMonthNavProps) {
   const { date, onChangeYear, onChangeMonth } = props;
 
   return (
-    <div className="max-w-6xl mx-auto flex items-center gap-4 select-none">
+    <div className="max-w-6xl mx-auto flex items-center gap-4 select-none px-4">
       <div className="flex flex-col items-center gap-1">
         <IoIosArrowUp
           onClick={() => {
