@@ -43,9 +43,12 @@ export default function Calendar() {
 
   return (
     <div className="flex flex-col flex-1">
-      <button onClick={handleTodayClick} className="text-right text-xl pr-9">
-        오늘
-      </button>
+      <div className="px-9 flex justify-between text-xl">
+        <div>
+          <p>{date.format("YYYY년 MM월")}</p>
+        </div>
+        <button onClick={handleTodayClick}>오늘</button>
+      </div>
       <div id="calendar" className="flex-1 grid grid-cols-7 gap-2 text-center">
         <WeekdayHeader />
         {prev.map(day => (
