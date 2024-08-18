@@ -1,20 +1,9 @@
 "use client";
-import dayjs from "dayjs";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import HolidayCalendar from "./components/HolidayCalendar";
 
 export default function Home() {
-  const [date, setDate] = useState(dayjs());
-
   const containerRef = useRef<HTMLDivElement | null>(null);
-
-  const onChangeYear = (newDate: dayjs.Dayjs) => {
-    setDate(newDate);
-  };
-
-  const onChangeMonth = (newDate: dayjs.Dayjs) => {
-    setDate(newDate);
-  };
 
   useEffect(() => {
     const container = containerRef.current;
@@ -51,13 +40,7 @@ export default function Home() {
     <div id="scroll-container" ref={containerRef}>
       <main className="item flex flex-col w-full gap-6">
         <section className="w-full flex gap-4 flex-1">
-          <HolidayCalendar
-            className="w-full mx-auto flex-1"
-            year={date.year()}
-            month={date.month() + 1}
-            onChangeYear={onChangeYear}
-            onChangeMonth={onChangeMonth}
-          />
+          <HolidayCalendar className="w-full mx-auto flex-1" />
         </section>
       </main>
       <section className="item bg-slate-300">1</section>

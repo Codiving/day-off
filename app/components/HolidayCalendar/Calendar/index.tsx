@@ -2,14 +2,12 @@ import { DATE } from "@/app/data/date";
 import WeekdayHeader from "./WeekdayHeader";
 import dayjs from "dayjs";
 import OtherMonthDay from "./OtherMonthDay";
+import useDateStore from "@/app/store/useDateStore";
 
-interface CalendarProps {
-  year: number;
-  month: number;
-}
-
-export default function Calendar(props: CalendarProps) {
-  const { year, month } = props;
+export default function Calendar() {
+  const { date } = useDateStore();
+  const year = date.year();
+  const month = date.month() + 1;
 
   const dateInfo = DATE[year];
 
