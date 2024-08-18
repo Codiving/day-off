@@ -1,3 +1,4 @@
+import useDateStore from "@/app/store/useDateStore";
 import Calendar from "./Calendar";
 import ClosestHoliday from "./ClosestHoliday";
 import YearMonthNav from "./YearMonthNav";
@@ -8,6 +9,7 @@ interface HolidayCalendarProps {
 
 export default function HolidayCalendar(props: HolidayCalendarProps) {
   const { className } = props;
+  const { date } = useDateStore();
 
   return (
     <div className={`${className} flex flex-col`}>
@@ -16,11 +18,16 @@ export default function HolidayCalendar(props: HolidayCalendarProps) {
       </div>
 
       <div className="w-full bg-gray-100 py-4 px-4 flex-1">
-        <div className="flex max-w-6xl mx-auto" style={{ height: 600 }}>
-          <div className="w-30p flex items-center justify-center flex-col gap-3">
-            <ClosestHoliday />
+        <div className="flex flex-col max-w-6xl mx-auto">
+          <div className="flex" style={{ height: 600 }}>
+            <div className="w-30p flex items-center justify-center flex-col gap-3">
+              <ClosestHoliday />
+            </div>
+            <Calendar />
           </div>
-          <Calendar />
+          <div>
+            {date.format("YYYY년 MM월")}에 연차쓰기 좋은 날은 16일입니다.
+          </div>
         </div>
       </div>
     </div>
