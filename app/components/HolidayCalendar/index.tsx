@@ -18,15 +18,13 @@ export default function HolidayCalendar(props: HolidayCalendarProps) {
       </div>
 
       <div className="w-full bg-gray-100 py-4 px-4 flex-1">
-        <div className="flex flex-col max-w-6xl mx-auto">
-          <div className="flex" style={{ height: 600 }}>
-            <div className="w-30p flex items-center justify-center flex-col gap-3">
-              <ClosestHoliday />
-            </div>
+        <div className="flex flex-col max-w-4xl mx-auto gap-6">
+          <div className="flex" style={{ height: 500 }}>
             <Calendar />
           </div>
-          <div>
-            {date.format("YYYY년 MM월")}에 연차쓰기 좋은 날은 16일입니다.
+          <div className="px-4">
+            <p className="text-xl">8월 15일(목) - 8월 18일(일) / 4일 휴가</p>
+            <p className="text-xl">* 16일 연차 추천</p>
           </div>
         </div>
       </div>

@@ -30,21 +30,27 @@ export default function CalendarDay({
 
   const dayClasses = [
     holiday
-      ? "rounded-full bg-red-500 text-white py-1 px-2 flex items-center aspect-[1/1]"
+      ? "rounded-full bg-red-500 text-white py-1 px-2 flex items-center justify-center w-full"
       : "",
     isSunday ? "text-red-500" : isSaturday ? "text-blue-500" : ""
   ].join(" ");
 
   return (
-    <div className="justify-center items-center relative p-4 text-2xl flex flex-col gap-2">
+    <div className="justify-center items-center relative p-2 text-2xl flex flex-col gap-2">
       <span className={dayClasses}>{String(day).padStart(2, "0")}</span>
       {!!holiday && (
-        <span className="bottom-0 absolute text-sm left-1/2 transform -translate-x-1/2 whitespace-nowrap">
+        <span
+          style={{ bottom: -4 }}
+          className="absolute text-sm left-1/2 transform -translate-x-1/2 whitespace-nowrap"
+        >
           {holiday.name}
         </span>
       )}
       {!holiday && isToday && (
-        <span className="bottom-0 absolute text-sm text-green-800 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
+        <span
+          style={{ bottom: -4 }}
+          className="absolute text-sm text-green-800 left-1/2 transform -translate-x-1/2 whitespace-nowrap"
+        >
           오늘
         </span>
       )}
