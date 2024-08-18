@@ -1,5 +1,5 @@
 interface Holiday {
-  date: number;
+  date: Date;
   name: string;
   description: string;
 }
