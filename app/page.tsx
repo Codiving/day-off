@@ -1,8 +1,7 @@
 "use client";
 import dayjs from "dayjs";
-import React, { useEffect, useRef, useState } from "react";
-import Calendar from "./components/Calendar";
-import Header from "./components/Header";
+import { useEffect, useRef, useState } from "react";
+import HolidayCalendar from "./components/HolidayCalendar";
 
 export default function Home() {
   const [date, setDate] = useState(dayjs());
@@ -52,7 +51,7 @@ export default function Home() {
     <div id="scroll-container" ref={containerRef}>
       <main className="item flex flex-col w-full gap-6">
         <section className="w-full flex gap-4 flex-1">
-          <Calendar
+          <HolidayCalendar
             className="w-full mx-auto flex-1"
             year={date.year()}
             month={date.month() + 1}
