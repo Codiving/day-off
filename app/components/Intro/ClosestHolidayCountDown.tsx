@@ -19,6 +19,19 @@ export default function ClosestHolidayCountDown(
     minutes: 0,
     seconds: 0
   });
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 640);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 640);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -48,23 +61,31 @@ export default function ClosestHolidayCountDown(
       </h2>
       <div className="grid grid-flow-col gap-5 text-center grid-cols-4">
         <div className="flex flex-col gap-4 p-5 bg-gray-300 rounded-xl">
-          <span className="text-sm sm:text-4xl">Days</span>
+          <span className="text-sm sm:text-4xl">
+            {isSmallScreen ? "일" : "Days"}
+          </span>
           <span className="text-2xl sm:text-5xl">{timeLeft.days}</span>
         </div>
         <div className="flex flex-col gap-4 p-5 bg-gray-300 rounded-xl">
-          <span className="text-sm sm:text-4xl">Hours</span>
+          <span className="text-sm sm:text-4xl">
+            {isSmallScreen ? "시" : "Hours"}
+          </span>
           <span className="text-2xl sm:text-5xl">
             {String(timeLeft.hours).padStart(2, "0")}
           </span>
         </div>
         <div className="flex flex-col gap-4 p-5 bg-gray-300 rounded-xl">
-          <span className="text-sm sm:text-4xl">Min</span>
+          <span className="text-sm sm:text-4xl">
+            {isSmallScreen ? "분" : "Min"}
+          </span>
           <span className="text-2xl sm:text-5xl">
             {String(timeLeft.minutes).padStart(2, "0")}
           </span>
         </div>
         <div className="flex flex-col gap-4 p-5 bg-gray-300 rounded-xl">
-          <span className="text-sm sm:text-4xl">Sec</span>
+          <span className="text-sm sm:text-4xl">
+            {isSmallScreen ? "초" : "Sec"}
+          </span>
           <span className="text-2xl sm:text-5xl">
             {String(timeLeft.seconds).padStart(2, "0")}
           </span>
