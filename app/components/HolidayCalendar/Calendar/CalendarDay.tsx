@@ -23,6 +23,9 @@ export default function CalendarDay({
   const today = dayjs();
   const isToday = today.isSame(dayDate, "day");
 
+  const dayOff = dateInfo.dayOff;
+  const isDayOff = dayOff.includes(dateNumber);
+
   const holiday = dateInfo.holiday.find(
     ({ date }: { date: string }) =>
       Number(dayjs(date).format("YYYYMMDD")) === dateNumber
@@ -32,7 +35,13 @@ export default function CalendarDay({
     holiday
       ? "rounded-full bg-red-500 text-white py-1 px-2 flex items-center justify-center w-full"
       : "",
-    isSunday ? "text-red-500" : isSaturday ? "text-blue-500" : ""
+    isSunday
+      ? "text-red-500"
+      : isSaturday
+      ? "text-blue-500"
+      : isDayOff
+      ? "rounded-full bg-green-700 text-white py-1 px-2 flex items-center justify-center w-full"
+      : ""
   ].join(" ");
 
   return (
@@ -44,6 +53,14 @@ export default function CalendarDay({
           className="absolute text-sm left-1/2 transform -translate-x-1/2 whitespace-nowrap"
         >
           {holiday.name}
+        </span>
+      )}
+      {isDayOff && (
+        <span
+          style={{ bottom: -4 }}
+          className="absolute text-sm left-1/2 transform -translate-x-1/2 whitespace-nowrap"
+        >
+          {"연차"}
         </span>
       )}
       {!holiday && isToday && (

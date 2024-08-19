@@ -42,9 +42,9 @@ export default function ClosestHolidayCountDown(
   }, [date]);
 
   return (
-    <div>
+    <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center px-4">
       <h2 className="text-center mb-4">
-        <span className="text-5xl">{name}</span>까지 남은 시간
+        <span className="text-5xl text-green-700">{name}</span>까지 남은 시간
       </h2>
       <div className="grid grid-flow-col gap-5 text-center grid-cols-4">
         <div className="flex flex-col gap-4 p-5 bg-gray-300 rounded-xl">
