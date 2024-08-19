@@ -19,7 +19,7 @@ export default function ClosestHolidayCountDown(
     minutes: 0,
     seconds: 0
   });
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 640);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
