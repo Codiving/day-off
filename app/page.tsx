@@ -3,7 +3,11 @@ import { useEffect, useRef } from "react";
 import DayOffAbbrev from "./components/DayOffAbbrev";
 import HolidayCalendar from "./components/HolidayCalendar";
 import Intro from "./components/Intro";
+import HolidayAbbrev from "./components/HolidayAbbrev";
 
+import "dayjs/locale/ko";
+import dayjs from "dayjs";
+dayjs.locale("ko");
 export default function Home() {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -51,7 +55,9 @@ export default function Home() {
       <section className="item">
         <DayOffAbbrev />
       </section>
-      <section className="item bg-yellow-300">3</section>
+      <section className="item bg-yellow-200">
+        <HolidayAbbrev />
+      </section>
     </div>
   );
 }
