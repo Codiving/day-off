@@ -55,7 +55,7 @@ export default function Home() {
       <section className="item">
         <DayOffAbbrev />
       </section>
-      <section className="item bg-yellow-200">
+      <section className="item">
         <HolidayAbbrev />
       </section>
     </div>
