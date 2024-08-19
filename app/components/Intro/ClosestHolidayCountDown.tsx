@@ -28,7 +28,7 @@ export default function ClosestHolidayCountDown(
       const remainingTime = dayjs.duration(diff);
 
       setTimeLeft({
-        days: remainingTime.days(),
+        days: remainingTime.days() + 1,
         hours: remainingTime.hours(),
         minutes: remainingTime.minutes(),
         seconds: remainingTime.seconds()
