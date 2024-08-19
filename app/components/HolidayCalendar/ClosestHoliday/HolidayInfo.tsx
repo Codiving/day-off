@@ -7,7 +7,7 @@ interface HolidayInfoProps {
 
 export default function HolidayInfo(props: HolidayInfoProps) {
   const {
-    holiday: { name, description, date }
+    holiday: { name, date }
   } = props;
 
   return (
