@@ -1,6 +1,8 @@
+import { DATE } from "@/app/data/date";
 import useDateStore from "@/app/store/useDateStore";
 import Calendar from "./Calendar";
-import ClosestHoliday from "./ClosestHoliday";
+import NonRecommandDesc from "./NonRecommandDesc";
+import RecommandDesc from "./RecommandDesc";
 import YearMonthNav from "./YearMonthNav";
 
 interface HolidayCalendarProps {
@@ -10,6 +12,7 @@ interface HolidayCalendarProps {
 export default function HolidayCalendar(props: HolidayCalendarProps) {
   const { className } = props;
   const { date } = useDateStore();
+  const description = DATE[date.year()].description[date.month() + 1] || [];
 
   return (
     <div className={`${className} flex flex-col`}>
@@ -22,10 +25,8 @@ export default function HolidayCalendar(props: HolidayCalendarProps) {
           <div className="flex" style={{ height: 500 }}>
             <Calendar />
           </div>
-          <div className="px-4">
-            <p className="text-xl">8월 15일(목) - 8월 18일(일) / 4일 휴가</p>
-            <p className="text-xl">* 16일 연차 추천</p>
-          </div>
+          {!!description.length && <RecommandDesc description={description} />}
+          {!description.length && <NonRecommandDesc />}
         </div>
       </div>
     </div>
