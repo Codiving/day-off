@@ -1,7 +1,6 @@
 interface Holiday {
   date: Date;
   name: string;
-  description: string;
 }
 
 interface Anniversary {
