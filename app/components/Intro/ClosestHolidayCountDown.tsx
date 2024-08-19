@@ -48,24 +48,24 @@ export default function ClosestHolidayCountDown(
       </h2>
       <div className="grid grid-flow-col gap-5 text-center grid-cols-4">
         <div className="flex flex-col gap-4 p-5 bg-gray-300 rounded-xl">
-          <span>Days</span>
-          <span className="text-5xl">{timeLeft.days}</span>
+          <span className="text-sm sm:text-4xl">Days</span>
+          <span className="text-2xl sm:text-5xl">{timeLeft.days}</span>
         </div>
         <div className="flex flex-col gap-4 p-5 bg-gray-300 rounded-xl">
-          <span>Hours</span>
-          <span className="text-5xl">
+          <span className="text-sm sm:text-4xl">Hours</span>
+          <span className="text-2xl sm:text-5xl">
             {String(timeLeft.hours).padStart(2, "0")}
           </span>
         </div>
         <div className="flex flex-col gap-4 p-5 bg-gray-300 rounded-xl">
-          <span>Min</span>
-          <span className="text-5xl">
+          <span className="text-sm sm:text-4xl">Min</span>
+          <span className="text-2xl sm:text-5xl">
             {String(timeLeft.minutes).padStart(2, "0")}
           </span>
         </div>
         <div className="flex flex-col gap-4 p-5 bg-gray-300 rounded-xl">
-          <span>Sec</span>
-          <span className="text-5xl">
+          <span className="text-sm sm:text-4xl">Sec</span>
+          <span className="text-2xl sm:text-5xl">
             {String(timeLeft.seconds).padStart(2, "0")}
           </span>
         </div>
