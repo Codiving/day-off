@@ -1,5 +1,4 @@
 import useDateStore from "@/app/store/useDateStore";
-import dayjs from "dayjs";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 export default function YearMonthNav() {
@@ -15,7 +14,7 @@ export default function YearMonthNav() {
           size={20}
           className="cursor-pointer text-slate-500 hover:text-slate-700 hover:scale-110 transition-transform duration-300"
         />
-        <span className="text-3xl">{date.format("YYYY년")}</span>
+        <span className="text-lg sm:text-3xl">{date.format("YYYY년")}</span>
         <IoIosArrowDown
           onClick={() => {
             setDate(date.subtract(1, "year"));
@@ -32,7 +31,7 @@ export default function YearMonthNav() {
           size={20}
           className="cursor-pointer text-slate-500 hover:text-slate-700 hover:scale-110 transition-transform duration-300"
         />
-        <span className="text-3xl">{date.format("MM월")}</span>
+        <span className="text-lg sm:text-3xl">{date.format("MM월")}</span>
         <IoIosArrowDown
           onClick={() => {
             setDate(date.subtract(1, "month"));
@@ -41,7 +40,7 @@ export default function YearMonthNav() {
           className="mt-2 cursor-pointer text-slate-500 hover:text-slate-700 hover:scale-110 transition-transform duration-300"
         />
       </div>
-      <p className="mb-2">연차쓰기 좋은 날은?</p>
+      <p className="mb-2 text-lg sm:text-3xl">연차쓰기 좋은 날은?</p>
     </div>
   );
 }

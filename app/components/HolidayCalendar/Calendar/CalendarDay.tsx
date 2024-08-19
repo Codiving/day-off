@@ -45,28 +45,31 @@ export default function CalendarDay({
   ].join(" ");
 
   return (
-    <div className="justify-center items-center relative p-2 text-2xl flex flex-col gap-2">
+    <div
+      className="justify-center items-center relative p-2 text-lg sm:text-2xl flex flex-col gap-2"
+      style={{ minHeight: 60 }}
+    >
       <span className={dayClasses}>{String(day).padStart(2, "0")}</span>
       {!!holiday && (
         <span
-          style={{ bottom: -4 }}
-          className="absolute text-sm left-1/2 transform -translate-x-1/2 whitespace-nowrap"
+          style={{ bottom: -10 }}
+          className="absolute text-xs sm:text-sm left-1/2 transform -translate-x-1/2 whitespace-nowrap"
         >
           {holiday.name}
         </span>
       )}
       {isDayOff && (
         <span
-          style={{ bottom: -4 }}
-          className="absolute text-sm left-1/2 transform -translate-x-1/2 whitespace-nowrap"
+          style={{ bottom: -10 }}
+          className="absolute text-xs sm:text-sm left-1/2 transform -translate-x-1/2 whitespace-nowrap"
         >
           {"연차"}
         </span>
       )}
       {!holiday && isToday && (
         <span
-          style={{ bottom: -4 }}
-          className="absolute text-sm text-green-800 left-1/2 transform -translate-x-1/2 whitespace-nowrap"
+          style={{ bottom: -10 }}
+          className="absolute text-xs sm:text-sm text-green-800 left-1/2 transform -translate-x-1/2 whitespace-nowrap"
         >
           오늘
         </span>

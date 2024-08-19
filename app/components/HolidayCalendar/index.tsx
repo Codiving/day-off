@@ -16,13 +16,13 @@ export default function HolidayCalendar(props: HolidayCalendarProps) {
 
   return (
     <div className={`${className} flex flex-col`}>
-      <div className="w-full py-6">
+      <div className="w-full py-1 sm:py-6">
         <YearMonthNav />
       </div>
 
-      <div className="w-full bg-gray-100 py-4 px-4 flex-1">
+      <div className="w-full bg-gray-100 p-2 sm:p-4 flex-1">
         <div className="flex flex-col max-w-4xl mx-auto gap-6">
-          <div className="flex" style={{ height: 500 }}>
+          <div className="flex">
             <Calendar />
           </div>
           {!!description.length && <RecommandDesc description={description} />}
