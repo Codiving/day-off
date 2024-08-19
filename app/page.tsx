@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
+import DayOffAbbrev from "./components/DayOffAbbrev";
 import HolidayCalendar from "./components/HolidayCalendar";
 import Intro from "./components/Intro";
 
@@ -47,7 +48,9 @@ export default function Home() {
           <HolidayCalendar className="w-full mx-auto flex-1" />
         </section>
       </main>
-      <section className="item bg-red-300">2</section>
+      <section className="item">
+        <DayOffAbbrev />
+      </section>
       <section className="item bg-yellow-300">3</section>
     </div>
   );
