@@ -1,13 +1,32 @@
 "use client";
+import dayjs from "dayjs";
+import "dayjs/locale/ko";
 import { useEffect, useRef } from "react";
 import DayOffAbbrev from "./components/DayOffAbbrev";
+import HolidayAbbrev from "./components/HolidayAbbrev";
 import HolidayCalendar from "./components/HolidayCalendar";
 import Intro from "./components/Intro";
-import HolidayAbbrev from "./components/HolidayAbbrev";
-
-import "dayjs/locale/ko";
-import dayjs from "dayjs";
 dayjs.locale("ko");
+
+export const metadata = {
+  title: "연차쓰기 좋은 날",
+  description:
+    "연차 사용을 고민하는 직장인들에게 최적의 날짜를 추천해주는 사이트!",
+  authors: [{ name: "Codiving", url: "https://www.dayoff.codiving.kr" }],
+  creator: "Codiving",
+  keywords: ["연차쓰기 좋은 날", "휴가쓰기 좋은 날", "연차", "휴가"],
+  openGraph: {
+    title: "연차쓰기 좋은 날",
+    description:
+      "연차 사용을 고민하는 직장인들에게 최적의 날짜를 추천해주는 사이트!",
+    url: "https://www.dayoff.codiving.kr",
+    siteName: "연차쓰기 좋은 날",
+    images: [{ url: "https://www.dayoff.codiving.kr/thumb.png" }],
+    locale: "ko_KR",
+    type: "website"
+  }
+};
+
 export default function Home() {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
