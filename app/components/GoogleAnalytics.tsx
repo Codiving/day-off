@@ -1,6 +1,8 @@
 import Script from "next/script";
 
 export default function GoogleAnalytics() {
+  if (!process.env.NEXT_PUBLIC_GA) return null;
+
   return (
     <>
       <Script
