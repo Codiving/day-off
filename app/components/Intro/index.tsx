@@ -1,6 +1,7 @@
 import { getClosestHoliday } from "@/app/utils";
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
+import AdRect from "./AdRect";
 import ClosestHolidayCountDown from "./ClosestHolidayCountDown";
 dayjs.extend(duration);
 
@@ -18,6 +19,7 @@ export default function Intro() {
       </div>
       {!holiday && <p>이번년도 남은 공휴일이 없습니다.</p>}
       {holiday && <ClosestHolidayCountDown holiday={holiday} />}
+      <AdRect />
     </div>
   );
 }
